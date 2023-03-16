@@ -37,41 +37,40 @@ function setup() {
   }
 
   function mouseDragged() {
-      if(mouseIsPressed === true) {
+    if(mouseIsPressed === true && currentShape === "line") {
         stroke(colorPicker.color());
         line(mouseX, mouseY, pmouseX, pmouseY);
+    }
+    else if(mouseIsPressed === true && currentShape === "circle") {
+      stroke(colorPicker.color());
+      fill(colorPicker.color());
+      ellipse(mouseX, mouseY, 50);
+    }
+    else if(mouseIsPressed === true && currentShape === "square") {
+      stroke(colorPicker.color());
+      fill(colorPicker.color());
+      rect(mouseX, mouseY, 50, 50);
+    }
+    else if(mouseIsPressed === true && currentShape === "rectangle") {
+      stroke(colorPicker.color());
+      fill(colorPicker.color());
+      rect(mouseX, mouseY, 50, 100);
     }
   }
 
   function drawLine() {
     currentShape = "line";
-
   }
 
   function drawCircle() {
-    currentShape = "circle";
-    fill(colorPicker.color());
-    if(mouseIsPressed === true) {
-      stroke(colorPicker.color());
-      ellipse(mouseX, mouseY, 50);
-    }
+    currentShape = "circle"; 
   }
 
   function drawSquare() {
     currentShape = "square";
-    fill(colorPicker.color());
-    if(mouseIsPressed === true) {
-      stroke(colorPicker.color());
-      rect(mouseX, mouseY, 50, 50);
-    }
   }
 
   function drawRectangle() {
     currentShape = "rectangle";
-    fill(colorPicker.color());
-    if(mouseIsPressed === true) {
-      stroke(colorPicker.color());
-      rect(mouseX, mouseY, 50, 100);
-    }
   }
 
