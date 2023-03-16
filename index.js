@@ -34,6 +34,7 @@ function setup() {
 
     sizeChanger = createSlider(5, 100, 0);
     sizeChanger.position(windowWidth-100, 400);
+    sizeChanger.style('width', '80px');
 
   }
   
@@ -46,6 +47,7 @@ function setup() {
 
   function clearCanvas(){
     clear();
+    background(205);
   }
 
   function mouseDragged() {
@@ -57,17 +59,17 @@ function setup() {
     else if(mouseIsPressed === true && currentShape === "circle") {
       stroke(colorPicker.color());
       fill(colorPicker.color());
-      ellipse(mouseX, mouseY, 50);
+      ellipse(mouseX, mouseY, sizeChanger.value());
     }
     else if(mouseIsPressed === true && currentShape === "square") {
       stroke(colorPicker.color());
       fill(colorPicker.color());
-      rect(mouseX, mouseY, 50, 50);
+      rect(mouseX, mouseY, sizeChanger.value(), sizeChanger.value());
     }
     else if(mouseIsPressed === true && currentShape === "rectangle") {
       stroke(colorPicker.color());
       fill(colorPicker.color());
-      rect(mouseX, mouseY, 50, 100);
+      rect(mouseX, mouseY, sizeChanger.value(), 100);
     }
   }
 
