@@ -39,6 +39,14 @@ function setup() {
     eraseButton = createButton("Erase");
     eraseButton.position(windowWidth-100, 450);
     eraseButton.mousePressed(eraseMistakes);
+    
+    gridButton = createButton("Show Grid");
+    gridButton.position(windowWidth-100, 475);
+    gridButton.mousePressed(showGrid);
+
+    removeGridButton = createButton("Remove Grid");
+    removeGridButton.position(windowWidth-100, 500);
+    removeGridButton.mousePressed(removeGrid);
   }
   
   function draw() {
@@ -55,6 +63,31 @@ function setup() {
 
   function eraseMistakes(){
     currentShape = "erase";
+  }
+
+  function showGrid(){
+    if(mouseIsPressed === true){
+      grid();
+    }
+  }
+
+  function removeGrid(){
+    if(mouseIsPressed === true){
+      erase();
+      grid();
+      noErase();
+    }
+  }
+
+  function grid() {
+    for (var x = 0; x < windowWidth; x += windowWidth / 20) {
+      for (var y = 0; y < windowHeight; y += windowHeight / 10) {
+        stroke(0);
+        strokeWeight(1);
+        line(x, 0, x, windowHeight);
+        line(0, y, windowWidth, y);
+      }
+    }
   }
 
   function mouseDragged() {
