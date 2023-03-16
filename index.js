@@ -1,5 +1,6 @@
 var colorPicker;
 var currentColor;
+var currentShape;
 
 function setup() {
     let canvas = createCanvas(windowWidth, windowHeight);
@@ -7,19 +8,25 @@ function setup() {
     colorPicker.position(25, 350);
     background(204);
     fill("black");
-    text("Choose your color", 25, 400);
-    let circle = ellipse(50, 40, 50);
-    text("press c for circle", 25, 80);
-    let square = rect(25, 100, 50, 50);
-    text("press s for square", 25, 175);
-    let rectangle = rect(25, 200, 50, 100);
-    text("press r for rectangle", 25, 325);
+    lineButton = createButton("Line");
+    lineButton.position(25, 200);
+    lineButton.mousePressed(drawLine);
+
+    circleButton = createButton("Circle");
+    circleButton.position(25, 50);
+    circleButton.mousePressed(drawCircle);
+
+    squareButton = createButton("Square");
+    squareButton.position(25, 100);
+    squareButton.mousePressed(drawSquare);
+
+    rectangleButton = createButton("Rectangle");
+    rectangleButton.position(25, 150);
+    rectangleButton.mousePressed(drawRectangle);
+
     saveButton = createButton("Save");
     saveButton.position(25, 425);
     saveButton.mousePressed(saveImage);
-    lineButton = createButton("Line");
-    lineButton.position(25, 450);
-    lineButton.mouseIsPressed(drawLine);
   }
   
   function draw() {
@@ -30,9 +37,41 @@ function setup() {
   }
 
   function mouseDragged() {
-    if(mouseIsPressed === true) {
+      if(mouseIsPressed === true) {
         stroke(colorPicker.color());
         line(mouseX, mouseY, pmouseX, pmouseY);
+    }
+  }
+
+  function drawLine() {
+    currentShape = "line";
+
+  }
+
+  function drawCircle() {
+    currentShape = "circle";
+    fill(colorPicker.color());
+    if(mouseIsPressed === true) {
+      stroke(colorPicker.color());
+      ellipse(mouseX, mouseY, 50);
+    }
+  }
+
+  function drawSquare() {
+    currentShape = "square";
+    fill(colorPicker.color());
+    if(mouseIsPressed === true) {
+      stroke(colorPicker.color());
+      rect(mouseX, mouseY, 50, 50);
+    }
+  }
+
+  function drawRectangle() {
+    currentShape = "rectangle";
+    fill(colorPicker.color());
+    if(mouseIsPressed === true) {
+      stroke(colorPicker.color());
+      rect(mouseX, mouseY, 50, 100);
     }
   }
 
