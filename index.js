@@ -3,30 +3,38 @@ var currentColor;
 var currentShape;
 
 function setup() {
-    let canvas = createCanvas(windowWidth, windowHeight);
+    let canvas = createCanvas(windowWidth-150, windowHeight);
+    background(205);
     colorPicker = createColorPicker("blue");
-    colorPicker.position(25, 350);
-    background(204);
-    fill("black");
+    colorPicker.position(windowWidth-100, 350); 
+    
     lineButton = createButton("Line");
-    lineButton.position(25, 200);
+    lineButton.position(windowWidth-100, 200);
     lineButton.mousePressed(drawLine);
 
     circleButton = createButton("Circle");
-    circleButton.position(25, 50);
+    circleButton.position(windowWidth-100, 50);
     circleButton.mousePressed(drawCircle);
 
     squareButton = createButton("Square");
-    squareButton.position(25, 100);
+    squareButton.position(windowWidth-100, 100);
     squareButton.mousePressed(drawSquare);
 
     rectangleButton = createButton("Rectangle");
-    rectangleButton.position(25, 150);
+    rectangleButton.position(windowWidth-100, 150);
     rectangleButton.mousePressed(drawRectangle);
 
     saveButton = createButton("Save");
-    saveButton.position(25, 425);
+    saveButton.position(windowWidth-100, 425);
     saveButton.mousePressed(saveImage);
+
+    clearButton = createButton("clear");
+    clearButton.position(windowWidth-100, 450);
+    clearButton.mousePressed(clearCanvas);
+
+    sizeChanger = createSlider(5, 100, 0);
+    sizeChanger.position(windowWidth-100, 400);
+
   }
   
   function draw() {
@@ -36,9 +44,14 @@ function setup() {
     save("Mycanvas.jpg");
   }
 
+  function clearCanvas(){
+    clear();
+  }
+
   function mouseDragged() {
     if(mouseIsPressed === true && currentShape === "line") {
         stroke(colorPicker.color());
+        strokeWeight(sizeChanger.value());
         line(mouseX, mouseY, pmouseX, pmouseY);
     }
     else if(mouseIsPressed === true && currentShape === "circle") {
