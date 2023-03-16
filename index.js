@@ -36,6 +36,9 @@ function setup() {
     sizeChanger.position(windowWidth-100, 400);
     sizeChanger.style('width', '80px');
 
+    eraseButton = createButton("Erase");
+    eraseButton.position(windowWidth-100, 450);
+    eraseButton.mousePressed(eraseMistakes);
   }
   
   function draw() {
@@ -48,6 +51,10 @@ function setup() {
   function clearCanvas(){
     clear();
     background(205);
+  }
+
+  function eraseMistakes(){
+    currentShape = "erase";
   }
 
   function mouseDragged() {
@@ -71,6 +78,11 @@ function setup() {
       fill(colorPicker.color());
       rect(mouseX, mouseY, sizeChanger.value(), 100);
     }
+    if(mouseIsPressed === true && currentShape === "erase") {
+      stroke(205);
+      strokeWeight(sizeChanger.value());
+      line(mouseX, mouseY, pmouseX, pmouseY);
+  }
   }
 
   function drawLine() {
