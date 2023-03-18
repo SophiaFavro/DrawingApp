@@ -6,7 +6,7 @@ function setup() {
     let canvas = createCanvas(windowWidth-150, windowHeight);
     background(205);
     colorPicker = createColorPicker("blue");
-    colorPicker.position(windowWidth-100, 350); 
+    colorPicker.position(windowWidth-100, 250); 
     
     lineButton = createButton("Line");
     lineButton.position(windowWidth-100, 200);
@@ -25,27 +25,27 @@ function setup() {
     rectangleButton.mousePressed(drawRectangle);
 
     saveButton = createButton("Save");
-    saveButton.position(windowWidth-100, 425);
+    saveButton.position(windowWidth-100, 325);
     saveButton.mousePressed(saveImage);
 
     clearButton = createButton("clear");
-    clearButton.position(windowWidth-100, 450);
+    clearButton.position(windowWidth-100, 350);
     clearButton.mousePressed(clearCanvas);
 
     sizeChanger = createSlider(5, 100, 0);
-    sizeChanger.position(windowWidth-100, 400);
+    sizeChanger.position(windowWidth-100, 300);
     sizeChanger.style('width', '80px');
 
     eraseButton = createButton("Erase");
-    eraseButton.position(windowWidth-100, 450);
+    eraseButton.position(windowWidth-100, 375);
     eraseButton.mousePressed(eraseMistakes);
     
     gridButton = createButton("Show Grid");
-    gridButton.position(windowWidth-100, 475);
+    gridButton.position(windowWidth-100, 425);
     gridButton.mousePressed(showGrid);
 
     removeGridButton = createButton("Remove Grid");
-    removeGridButton.position(windowWidth-100, 500);
+    removeGridButton.position(windowWidth-100, 450);
     removeGridButton.mousePressed(removeGrid);
   }
   
